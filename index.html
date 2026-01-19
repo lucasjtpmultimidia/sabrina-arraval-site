@@ -1,0 +1,859 @@
+index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrina Arraval | Psicóloga Clínica</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            /* Palette - Warm & Welcoming */
+            --color-terracotta: #C88A75;
+            --color-terracotta-dark: #A66D58;
+            --color-nude: #F2EBE3;
+            --color-rose-soft: #F7F0EE;
+            --color-off-white: #FAF9F6;
+            --color-text-main: #4A423F;
+            --color-text-light: #7A726F;
+            --color-white: #FFFFFF;
+
+            /* Spacing & Radius */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-pill: 50px;
+            
+            /* Shadows */
+            --shadow-soft: 0 10px 30px rgba(166, 109, 88, 0.08);
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.03);
+
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--color-text-main);
+            background-color: var(--color-off-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--color-text-main);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-terracotta);
+            color: var(--color-white);
+            box-shadow: 0 4px 15px rgba(200, 138, 117, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-terracotta-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--color-text-main);
+            color: var(--color-text-main);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-text-main);
+            color: var(--color-white);
+        }
+
+        .section-padding {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center { text-align: center; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--color-off-white);
+            padding: var(--spacing-sm) 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        header.scrolled {
+            background-color: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-terracotta);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--color-text-main);
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--color-text-main);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-terracotta);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 0 100px 0;
+            background: linear-gradient(135deg, var(--color-off-white) 50%, var(--color-rose-soft) 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-main);
+        }
+
+        .hero-text h1 span {
+            color: var(--color-terracotta);
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            max-width: 480px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 500px;
+            background-color: #E0D4CC;
+            border-radius: 200px 200px 0 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Decorative circle */
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: var(--color-terracotta);
+            opacity: 0.1;
+            border-radius: 50%;
+            bottom: -20px;
+            left: -40px;
+            z-index: -1;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background-color: var(--color-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .about-image {
+            height: 400px;
+            background-color: var(--color-nude);
+            border-radius: var(--radius-md);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-text p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+        }
+
+        /* --- HOW IT WORKS --- */
+        .steps {
+            background-color: var(--color-off-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header p {
+            color: var(--color-text-light);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .step-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+            border-color: var(--color-nude);
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-nude);
+            color: var(--color-terracotta);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step-card h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.25rem;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
+        /* --- BENEFITS --- */
+        .benefits {
+            background-color: var(--color-rose-soft);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            color: var(--color-terracotta);
+            font-size: 1.5rem;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            padding: var(--spacing-md);
+            background-color: var(--color-off-white);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--color-text-main);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        .author {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-terracotta);
+        }
+
+        /* --- FAQ --- */
+        .faq {
+            background-color: var(--color-off-white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--color-white);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--color-terracotta);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 24px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 24px;
+            color: var(--color-text-light);
+        }
+
+        /* --- FINAL CTA --- */
+        .cta-section {
+            background-color: var(--color-terracotta);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--color-white);
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-section p {
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background-color: var(--color-white);
+            color: var(--color-terracotta);
+        }
+
+        .btn-white:hover {
+            background-color: var(--color-nude);
+            color: var(--color-terracotta-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #2C2826;
+            color: rgba(255,255,255,0.7);
+            padding: var(--spacing-lg) 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-brand h3 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: var(--color-white);
+            font-family: 'Lato', sans-serif;
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links ul li { margin-bottom: 8px; }
+        .footer-links ul li a:hover { color: var(--color-terracotta); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--spacing-md);
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 960px) {
+            .hero-content, .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero { padding-top: 120px; text-align: center;}
+            
+            .hero-image-placeholder {
+                margin-top: var(--spacing-md);
+                height: 350px;
+            }
+
+            .hero-text p { margin: 0 auto var(--spacing-md); }
+
+            .about-image { order: -1; height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplified for this demo */
+            .mobile-menu-btn { display: block; }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .container { width: 92%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    Sabrina Arraval<span>Psicóloga</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#sobre">Sobre mim</a>
+                    <a href="#como-funciona">Como funciona</a>
+                    <a href="#faq">Dúvidas</a>
+                </div>
+                <a href="#agendar" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Agendar sessão</a>
+                <div class="mobile-menu-btn">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Um espaço seguro para você se <span>reencontrar</span>.</h1>
+                    <p>Psicoterapia online com acolhimento, empatia e escuta ativa. Cuide da sua saúde mental no conforto do seu lar, no seu tempo.</p>
+                    <a href="#agendar" class="btn btn-primary">Agendar minha sessão</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-placeholder">
+                        <span style="color: #A66D58; font-family: 'Playfair Display'; font-style: italic; font-size: 1.5rem;">Acolhimento & Conexão</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="section-padding about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    </div>
+                <div class="about-text">
+                    <h2>Olá, sou a Sabrina.</h2>
+                    <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
+                    <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
+                    <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="section-padding steps">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como funciona a terapia online?</h2>
+                <p>Um processo simples, seguro e confidencial.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Agendamento</h3>
+                    <p>Você entra em contato via WhatsApp, tiramos suas dúvidas iniciais e escolhemos o melhor horário para sua rotina.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>A Sessão</h3>
+                    <p>No horário marcado, nos encontramos por videochamada (Google Meet ou Zoom) em uma plataforma segura e privada.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>O Processo</h3>
+                    <p>Caminhamos juntos, semana a semana, construindo ferramentas para você lidar melhor com suas emoções.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Por que iniciar a terapia?</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✦</div>
+                    <div class="benefit-content">
+                        <h3>Autoconhecimento</h3>
+                        <p>Entenda seus padrões de comportamento e a origem de suas emoções.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✦</div>
+                    <div class="benefit-content">
+                        <h3>Gestão da Ansiedade</h3>
+                        <p>Aprenda técnicas e reflexões para acalmar a mente em dias agitados.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✦</div>
+                    <div class="benefit-content">
+                        <h3>Relacionamentos</h3>
+                        <p>Melhore sua comunicação e a forma como você se relaciona consigo e com os outros.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✦</div>
+                    <div class="benefit-content">
+                        <h3>Acolhimento</h3>
+                        <p>Tenha um espaço semanal exclusivo para falar sobre você, sem filtros.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Relatos de quem já passou por aqui</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="quote">"A Sabrina tem uma escuta muito sensível. Me senti acolhida desde a primeira sessão online, mesmo estando em outro país. Foi essencial para meu processo de adaptação."</p>
+                    <p class="author">— M.S., 29 anos</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Eu tinha receio de fazer terapia pelo computador, mas a conexão foi imediata. Hoje aguardo ansiosamente pelo nosso horário semanal. Recomendo muito."</p>
+                    <p class="author">— Lucas A., 34 anos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Qual a duração da sessão?</button>
+                    <div class="faq-answer">
+                        <p>As sessões têm duração média de 50 minutos. É um tempo dedicado exclusivamente para você e suas questões.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Aceita convênios?</button>
+                    <div class="faq-answer">
+                        <p>Atualmente trabalho apenas com atendimentos particulares. No entanto, emito recibo para que você possa solicitar reembolso junto ao seu plano de saúde.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">A terapia online é eficaz?</button>
+                    <div class="faq-answer">
+                        <p>Sim! Estudos comprovam que a psicoterapia online tem a mesma eficácia da presencial para a maioria das demandas, com a vantagem da comodidade e flexibilidade.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como faço o pagamento?</button>
+                    <div class="faq-answer">
+                        <p>O pagamento pode ser realizado via PIX ou transferência bancária, geralmente antes da sessão ou em pacotes mensais. Combinamos o que for melhor para você.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agendar" class="section-padding cta-section">
+        <div class="container">
+            <h2>Vamos cuidar de você?</h2>
+            <p>Dê o primeiro passo em direção ao seu bem-estar. Estou pronta para te ouvir.</p>
+            <a href="#" class="btn btn-white">Entrar em contato pelo WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sabrina Arraval</h3>
+                    <p>Psicóloga Clínica<br>CRP 00/00000</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#como-funciona">Como funciona</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>contato@sabrinaarraval.com.br</p>
+                    <p>Atendimento Online para todo o Brasil e Exterior.</p>
+                    <div style="margin-top: 10px;">
+                        <span style="opacity: 0.7;">Instagram</span> • <span style="opacity: 0.7;">LinkedIn</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sabrina Arraval Psicóloga. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
