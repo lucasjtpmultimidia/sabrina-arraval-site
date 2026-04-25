@@ -217,7 +217,7 @@
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1fr 1fr;
             gap: var(--spacing-lg);
             align-items: center;
         }
@@ -241,49 +241,23 @@
             max-width: 480px;
         }
 
-        /* NOVA ESTRUTURA VISUAL DO HERO */
+        /* NOVO CSS PARA A IMAGEM DO HERO */
         .hero-visual {
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            max-width: 400px;
             width: 100%;
         }
 
-        .hero-image-wrapper img {
+        .hero-image {
             width: 100%;
+            max-width: 450px; /* Controla o tamanho máximo da imagem */
             height: auto;
-            aspect-ratio: 4/5;
+            border-radius: 20px; /* Cantos arredondados suaves */
+            box-shadow: var(--shadow-soft); /* Sombra elegante */
             object-fit: cover;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(200, 138, 117, 0.2);
-            z-index: 2;
-            position: relative;
-        }
-
-        /* Borda elegante atrás da imagem */
-        .hero-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--color-terracotta);
-            border-radius: 24px;
-            z-index: 1;
-            opacity: 0.5;
-            transition: var(--transition);
-        }
-
-        .hero-image-wrapper:hover::after {
-            top: 15px;
-            right: -15px;
+            /* Adiciona uma pequena borda branca (opcional, dá um efeito de foto) */
+            border: 8px solid var(--color-white); 
         }
 
         /* --- ABOUT SECTION --- */
@@ -585,17 +559,17 @@
 
             .hero { padding-top: 120px; text-align: center;}
             
-            .hero-image-wrapper {
-                margin: var(--spacing-md) auto 0;
+            .hero-visual {
+                margin-top: var(--spacing-md);
             }
 
             .hero-text p { margin: 0 auto var(--spacing-md); }
 
-            .about-image { order: -1; }
+            .about-image { order: -1;}
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links { display: none; } /* Simplified for this demo */
             .mobile-menu-btn { display: block; }
 
             .steps-grid {
@@ -607,7 +581,6 @@
             
             .container { width: 92%; }
         }
-
         .btn-whatsapp {
             display: inline-block;
             padding: 16px 36px;
@@ -653,33 +626,33 @@
                     <p>Psicoterapia online com acolhimento, empatia e escuta ativa. Cuide da sua saúde mental no conforto do seu lar, no seu tempo.</p>
                     <a href="#agendar" class="btn btn-primary">Agendar minha sessão</a>
                 </div>
+                
                 <div class="hero-visual">
-                    <div class="hero-image-wrapper">
-                        <img src="Foto Bina Retrato.jpg" alt="Sabrina Arraval Psicóloga">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="section-padding about">
-        <div class="container">
-            <div class="about-grid">
-                
-                <div class="about-image">
-                    <img src="Foto Bina Lendo.jpg" alt="Retrato Sabrina Arraval" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-                </div>
-                
-                <div class="about-text">
-                    <h2>Olá, sou a Sabrina.</h2>
-                    <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
-                    <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
-                    <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
+                    <img src="Foto Bina Retrato.jpg" alt="Sabrina Arraval Psicóloga" class="hero-image">
                 </div>
 
             </div>
         </div>
     </section>
+
+<section id="sobre" class="section-padding about">
+    <div class="container">
+        <div class="about-grid">
+            
+            <div class="about-image">
+                <img src="Foto Bina Lendo.jpg" alt="Retrato Sabrina Arraval" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+            </div>
+            
+            <div class="about-text">
+                <h2>Olá, sou a Sabrina.</h2>
+                <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
+                <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
+                <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <section id="como-funciona" class="section-padding steps">
         <div class="container">
@@ -802,7 +775,9 @@
             <h2>Vamos cuidar de você?</h2>
             <p>Dê o primeiro passo em direção ao seu bem-estar. Estou pronta para te ouvir.</p>
             <a href="https://wa.me/554198785111?text=Olá,%20Sabrina.%20Gostaria%20de%20agendar%20uma%20conversa%20inicial."
-  class="btn-whatsapp" target="_blank">
+  class="btn-whatsapp"
+  target="_blank"
+>
   Entrar em contato pelo WhatsApp
 </a>
 
