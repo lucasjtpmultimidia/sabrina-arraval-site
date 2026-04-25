@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabrina Arraval | Psicóloga Clínica</title>
-    <meta name="description" content="Psicóloga Sabrina Arraval – Terapia online para autoconhecimento, ansiedade e relacionamentos. Agende sua sessão com acolhimento e escuta ativa.">
+    <meta name="description" content="Psicóloga Sabrina Arraval – Terapia online para ansiedade, depressão, autoestima e mais. Agende sua sessão com acolhimento e escuta ativa.">
     <meta property="og:title" content="Sabrina Arraval | Psicóloga Clínica">
     <meta property="og:description" content="Terapia online com empatia e segurança. Primeira sessão R$100,00. Agende pelo WhatsApp.">
     <meta property="og:image" content="https://seusite.com/Foto%20Bina%20Retrato.jpg">
@@ -55,6 +55,8 @@
         .btn { display: inline-block; padding: 14px 32px; border-radius: var(--radius-pill); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); border: none; text-align: center; }
         .btn-primary { background-color: var(--color-terracotta); color: var(--color-white); box-shadow: 0 4px 15px rgba(200, 138, 117, 0.3); }
         .btn-primary:hover { background-color: var(--color-terracotta-dark); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--color-terracotta); color: var(--color-terracotta); }
+        .btn-outline:hover { background-color: var(--color-terracotta); color: var(--color-white); }
         .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
         .section-padding { padding: var(--spacing-xl) 0; }
 
@@ -72,48 +74,209 @@
         .nav-links a:hover::after { width: 100%; }
         .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- HERO SECTION --- */
-        .hero { padding: 160px 0 100px 0; background: linear-gradient(135deg, var(--color-off-white) 50%, var(--color-rose-soft) 100%); min-height: 90vh; display: flex; align-items: center; }
-        .hero-content { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--spacing-lg); align-items: center; }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: var(--spacing-md); color: var(--color-text-main); }
-        .hero-text h1 span { color: var(--color-terracotta); font-style: italic; }
-        .hero-text p { font-size: 1.25rem; color: var(--color-text-light); margin-bottom: var(--spacing-md); max-width: 480px; }
-        .hero-visual { display: flex; justify-content: center; align-items: center; width: 100%; }
+        /* --- HERO SECTION (nova estrutura) --- */
+        .hero {
+            padding: 160px 0 80px 0;
+            background: linear-gradient(135deg, var(--color-off-white) 50%, var(--color-rose-soft) 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        .hero-photo {
+            text-align: center;
+        }
+        .hero-photo img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-sm);
+            box-shadow: var(--shadow-soft);
+            border: 4px solid var(--color-nude);
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: var(--spacing-sm);
+        }
+        .hero-tags span {
+            background-color: var(--color-nude);
+            color: var(--color-terracotta-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+        .hero-text h1 span {
+            color: var(--color-terracotta);
+            font-style: italic;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            max-width: 450px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-        /* --- BOOKING WIDGET --- */
-        .booking-widget { width: 100%; max-width: 500px; background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-card); overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
-        .booking-header { display: flex; justify-content: space-between; align-items: center; background: #FDFDFD; border-bottom: 1px solid #EAE5E0; }
-        .booking-tab { padding: 16px 24px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--color-terracotta); background: var(--color-white); border-bottom: 2px solid var(--color-terracotta); font-size: 1rem; }
-        .booking-timezone { padding-right: 24px; font-size: 0.75rem; color: var(--color-text-light); }
+        /* --- BOOKING SECTION (antiga na hero, agora em seção própria) --- */
+        .booking-section {
+            background-color: var(--color-white);
+        }
+        .booking-widget {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--color-off-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FDFDFD;
+            border-bottom: 1px solid #EAE5E0;
+        }
+        .booking-tab {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            background: var(--color-white);
+            border-bottom: 2px solid var(--color-terracotta);
+            font-size: 1rem;
+        }
+        .booking-timezone {
+            padding-right: 24px;
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+        }
+        .booking-pricing {
+            background-color: var(--color-nude);
+            text-align: center;
+            padding: 12px;
+            font-size: 0.95rem;
+            color: var(--color-text-main);
+            border-bottom: 1px solid #EAE5E0;
+        }
+        .booking-pricing strong {
+            color: var(--color-terracotta-dark);
+        }
+        .booking-calendar-wrapper {
+            padding: 24px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-terracotta) var(--color-nude);
+        }
+        .booking-grid {
+            display: flex;
+            gap: 16px;
+            min-width: max-content;
+        }
+        .booking-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 85px;
+        }
+        .booking-day-header {
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #EAE5E0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .day-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            text-transform: uppercase;
+        }
+        .day-date {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+        .booking-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .booking-slot {
+            background: var(--color-white);
+            border: 1px solid #EAE5E0;
+            padding: 10px 0;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+        }
+        .booking-slot:hover {
+            background: var(--color-nude);
+            color: var(--color-terracotta-dark);
+            border-color: var(--color-terracotta);
+        }
+        .booking-slot.selected {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            border-color: var(--color-terracotta);
+        }
+        .booking-footer {
+            padding: 16px;
+            background: #FDFDFD;
+            text-align: center;
+            border-top: 1px solid #EAE5E0;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
 
-        .booking-pricing { background-color: var(--color-nude); text-align: center; padding: 12px; font-size: 0.95rem; color: var(--color-text-main); border-bottom: 1px solid #EAE5E0; }
-        .booking-pricing strong { color: var(--color-terracotta-dark); }
+        /* --- ABOUT (agora só texto) --- */
+        .about {
+            background-color: var(--color-rose-soft);
+        }
+        .about-text {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        .about-text p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
 
-        .booking-calendar-wrapper { padding: 24px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--color-terracotta) var(--color-nude); }
-        .booking-calendar-wrapper::-webkit-scrollbar { height: 6px; }
-        .booking-calendar-wrapper::-webkit-scrollbar-track { background: var(--color-nude); border-radius: 10px; }
-        .booking-calendar-wrapper::-webkit-scrollbar-thumb { background-color: var(--color-terracotta); border-radius: 10px; }
-
-        .booking-grid { display: flex; gap: 16px; min-width: max-content; }
-        .booking-column { display: flex; flex-direction: column; gap: 12px; width: 85px; }
-        .booking-day-header { text-align: center; padding-bottom: 12px; border-bottom: 1px solid #EAE5E0; display: flex; flex-direction: column; gap: 2px; }
-        .day-name { font-weight: 700; font-size: 0.9rem; color: var(--color-text-main); text-transform: uppercase; }
-        .day-date { font-size: 0.8rem; color: var(--color-text-light); }
-
-        .booking-slots { display: flex; flex-direction: column; gap: 8px; }
-        .booking-slot { background: var(--color-off-white); border: 1px solid #EAE5E0; padding: 10px 0; border-radius: var(--radius-sm); font-family: 'Lato', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--color-text-main); cursor: pointer; transition: var(--transition); text-align: center; width: 100%; }
-        .booking-slot:hover { background: var(--color-nude); color: var(--color-terracotta-dark); border-color: var(--color-terracotta); }
-        .booking-slot.selected { background: var(--color-terracotta); color: var(--color-white); border-color: var(--color-terracotta); }
-
-        .booking-footer { padding: 16px; background: #FDFDFD; text-align: center; border-top: 1px solid #EAE5E0; font-size: 0.9rem; color: var(--color-text-light); }
-
-        /* --- OUTRAS SEÇÕES --- */
-        .about { background-color: var(--color-white); }
-        .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--spacing-lg); align-items: center; }
-        .about-image { height: auto; border-radius: var(--radius-md); overflow: hidden; }
-        .about-text h2 { font-size: 2.5rem; margin-bottom: var(--spacing-sm); }
-        .about-text p { margin-bottom: var(--spacing-sm); color: var(--color-text-light); font-size: 1.05rem; }
-
+        /* --- STEPS, BENEFITS, TESTIMONIALS, FAQ, CTA (mantidos) --- */
         .steps { background-color: var(--color-off-white); }
         .section-header { text-align: center; margin-bottom: var(--spacing-lg); max-width: 700px; margin-left: auto; margin-right: auto; }
         .section-header h2 { font-size: 2.25rem; margin-bottom: var(--spacing-sm); }
@@ -141,7 +304,7 @@
         .faq { background-color: var(--color-off-white); }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { background-color: var(--color-white); border-radius: var(--radius-sm); margin-bottom: var(--spacing-sm); overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .faq-question { padding: 20px 24px; width: 100%; text-align: left; background: none; border: none; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--color-text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question { padding: 20px 24px; width: 100%; text-align: left; background: none; border: none; font-weight: 700; font-size: 1.1rem; color: var(--color-text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--color-terracotta); transition: var(--transition); }
         .faq-item.active .faq-question::after { transform: rotate(45deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 24px; }
@@ -164,11 +327,27 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 960px) {
-            .hero-content, .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero { padding-top: 120px; text-align: center;}
-            .hero-visual { margin-top: var(--spacing-md); }
-            .hero-text p { margin: 0 auto var(--spacing-md); }
-            .about-image { order: -1; }
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-photo img {
+                width: 220px;
+                height: 220px;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
         }
         @media (max-width: 768px) {
             .nav-links { 
@@ -187,8 +366,6 @@
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: block; }
             .steps-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
             .container { width: 92%; }
         }
     </style>
@@ -213,99 +390,118 @@
         </div>
     </header>
 
-    <section id="hero-booking" class="hero">
+    <!-- HERO COM FOTO + ESPECIALIDADES -->
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Um espaço acolhedor para você se <span>reencontrar</span>.</h1>
-                    <p>Psicoterapia online com acolhimento, empatia e escuta ativa. Cuide da sua saúde mental no conforto do seu lar, no seu tempo.</p>
-                </div>
-                
-                <div class="hero-visual">
-                    <div class="booking-widget">
-                        <div class="booking-header">
-                            <div class="booking-tab">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                                </svg>
-                                Atendimento Online
-                            </div>
-                            <div class="booking-timezone">* Horário de Brasília</div>
-                        </div>
-                        
-                        <div class="booking-pricing">
-                            Duração: <strong>1h30</strong> | 1ª Sessão: <strong>R$ 100,00</strong> | Demais: <strong>R$ 150,00</strong>
-                        </div>
-
-                        <div class="booking-calendar-wrapper">
-                            <div class="booking-grid">
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Seg</span><span class="day-date">04/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Ter</span><span class="day-date">05/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Qua</span><span class="day-date">06/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Qui</span><span class="day-date">07/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Sex</span><span class="day-date">08/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Sáb</span><span class="day-date">09/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                                <div class="booking-column">
-                                    <div class="booking-day-header"><span class="day-name">Dom</span><span class="day-date">10/05</span></div>
-                                    <div class="booking-slots">
-                                        <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="booking-footer" id="booking-action-text">
-                            Selecione um horário ou <a href="https://wa.me/554198785111?text=Ol%C3%A1%2C%20Sabrina.%20Quero%20agendar%20uma%20consulta." target="_blank" style="color: var(--color-terracotta); font-weight: 700;">fale diretamente pelo WhatsApp</a>.
-                        </div>
+                <div class="hero-photo">
+                    <img src="Foto Bina Retrato.jpg" alt="Sabrina Arraval - Psicóloga Clínica">
+                    <div class="hero-tags">
+                        <span>ansiedade</span>
+                        <span>depressão</span>
+                        <span>angústia</span>
+                        <span>insônia</span>
+                        <span>dependência emocional</span>
+                        <span>vida amorosa</span>
+                        <span>Burnout</span>
+                        <span>autoestima</span>
                     </div>
                 </div>
-
+                <div class="hero-text">
+                    <h1>Um espaço <span>acolhedor</span> para você se reencontrar.</h1>
+                    <p>Psicoterapia online com acolhimento, empatia e escuta ativa. Cuide da sua saúde mental no conforto do seu lar, no seu tempo.</p>
+                    <div class="hero-actions">
+                        <a href="https://wa.me/554198785111?text=Ol%C3%A1%2C%20Sabrina.%20Gostaria%20de%20agendar%20uma%20conversa%20inicial." class="btn btn-primary" target="_blank">Agendar sessão</a>
+                        <a href="#sobre" class="btn btn-outline">Saiba mais</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- CALENDÁRIO DE AGENDAMENTO (em seção separada) -->
+    <section id="agendamento" class="section-padding booking-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Escolha seu horário</h2>
+                <p>Ou se preferir, agende diretamente pelo WhatsApp.</p>
+            </div>
+            <div class="booking-widget">
+                <div class="booking-header">
+                    <div class="booking-tab">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                        Atendimento Online
+                    </div>
+                    <div class="booking-timezone">* Horário de Brasília</div>
+                </div>
+                <div class="booking-pricing">
+                    Duração: <strong>1h30</strong> | 1ª Sessão: <strong>R$ 100,00</strong> | Demais: <strong>R$ 150,00</strong>
+                </div>
+                <div class="booking-calendar-wrapper">
+                    <div class="booking-grid">
+                        <!-- Colunas de dias e horários (mantidas conforme original) -->
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Seg</span><span class="day-date">04/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Ter</span><span class="day-date">05/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Qua</span><span class="day-date">06/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Qui</span><span class="day-date">07/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Sex</span><span class="day-date">08/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Sáb</span><span class="day-date">09/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                        <div class="booking-column">
+                            <div class="booking-day-header"><span class="day-name">Dom</span><span class="day-date">10/05</span></div>
+                            <div class="booking-slots">
+                                <button class="booking-slot">08:00</button><button class="booking-slot">09:30</button><button class="booking-slot">11:00</button><button class="booking-slot">12:30</button><button class="booking-slot">14:00</button><button class="booking-slot">15:30</button><button class="booking-slot">17:00</button><button class="booking-slot">18:30</button><button class="booking-slot">20:00</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-footer" id="booking-action-text">
+                    Selecione um horário ou <a href="https://wa.me/554198785111?text=Ol%C3%A1%2C%20Sabrina.%20Quero%20agendar%20uma%20consulta." target="_blank" style="color: var(--color-terracotta); font-weight: 700;">fale diretamente pelo WhatsApp</a>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE (somente texto, sem imagem) -->
     <section id="sobre" class="section-padding about">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="Foto Bina Retrato.png" alt="Retrato Sabrina Arraval" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-                </div>
-                <div class="about-text">
-                    <h2>Olá, sou a Sabrina.</h2>
-                    <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
-                    <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
-                    <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
-                </div>
+            <div class="about-text">
+                <h2>Olá, sou a Sabrina.</h2>
+                <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
+                <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
+                <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
             </div>
         </div>
     </section>
@@ -350,16 +546,14 @@
 
     <section class="section-padding testimonials">
         <div class="container">
-            <div class="section-header">
-                <h2>Relatos de quem já passou por aqui</h2>
-            </div>
+            <div class="section-header"><h2>Relatos de quem já passou por aqui</h2></div>
             <div class="testimonial-slider">
                 <div class="testimonial-card">
-                    <p class="quote">"A Sabrina tem uma escuta muito sensível. Me senti acolhida desde a primeira sessão online, mesmo estando em outro país. Foi essencial para meu processo de adaptação."</p>
+                    <p class="quote">"A Sabrina tem uma escuta muito sensível. Me senti acolhida desde a primeira sessão online."</p>
                     <p class="author">— M.S., 29 anos</p>
                 </div>
                 <div class="testimonial-card">
-                    <p class="quote">"Eu tinha receio de fazer terapia pelo computador, mas a conexão foi imediata. Hoje aguardo ansiosamente pelo nosso horário semanal. Recomendo muito."</p>
+                    <p class="quote">"A terapia online superou minhas expectativas. Hoje aguardo ansiosamente pelo nosso horário."</p>
                     <p class="author">— Lucas A., 34 anos</p>
                 </div>
             </div>
@@ -372,19 +566,19 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <button class="faq-question">Qual a duração da sessão?</button>
-                    <div class="faq-answer"><p>As sessões têm duração de 1 hora e 30 minutos (1h30).</p></div>
+                    <div class="faq-answer"><p>As sessões têm duração de 1 hora e 30 minutos.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">Quais são os valores?</button>
-                    <div class="faq-answer"><p>A primeira sessão custa R$ 100,00. As demais sessões custam R$ 150,00.</p></div>
+                    <div class="faq-answer"><p>1ª sessão R$ 100,00. Demais R$ 150,00.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">Aceita convênios?</button>
-                    <div class="faq-answer"><p>Atualmente trabalho apenas com atendimentos particulares. No entanto, emito recibo para que você possa solicitar reembolso junto ao seu plano de saúde.</p></div>
+                    <div class="faq-answer"><p>Atendo apenas particular, mas emito recibo para reembolso.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">A terapia online é eficaz?</button>
-                    <div class="faq-answer"><p>Sim! Estudos comprovam que a psicoterapia online tem a mesma eficácia da presencial para a maioria das demandas, com a vantagem da comodidade e flexibilidade.</p></div>
+                    <div class="faq-answer"><p>Sim, eficácia comprovada, com conforto e flexibilidade.</p></div>
                 </div>
             </div>
         </div>
@@ -418,9 +612,9 @@
                 <div class="footer-contact">
                     <h4>Contato</h4>
                     <p>contato@sabrinaarraval.com.br</p>
-                    <p>Atendimento Online para todo o Brasil e Exterior.</p>
+                    <p>Online para todo Brasil</p>
                     <div style="margin-top: 10px;">
-                        <a href="https://www.instagram.com/sabrina.psicologa1/" target="_blank" style="color: inherit; opacity: 0.8;">Instagram</a>
+                        <a href="https://www.instagram.com/sabrina.psicologa1/" target="_blank">Instagram</a>
                     </div>
                 </div>
             </div>
@@ -429,59 +623,47 @@
     </footer>
 
     <script>
-        // Header scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile menu
         const mobileBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
 
         // Booking slots
         const slots = document.querySelectorAll('.booking-slot');
         const actionText = document.getElementById('booking-action-text');
-
         slots.forEach(slot => {
             slot.addEventListener('click', function() {
                 slots.forEach(s => s.classList.remove('selected'));
                 this.classList.add('selected');
-                
                 const time = this.innerText;
                 const column = this.closest('.booking-column');
                 const dayName = column.querySelector('.day-name').innerText;
                 const dayDate = column.querySelector('.day-date').innerText;
-
                 const wppMessage = encodeURIComponent(`Olá, Sabrina. Gostaria de agendar minha 1ª sessão para ${dayName} (${dayDate}) às ${time}.`);
                 actionText.innerHTML = `<a href="https://wa.me/554198785111?text=${wppMessage}" target="_blank" style="color: var(--color-terracotta); font-weight: 700; text-decoration: none;">Reservar para ${dayName} às ${time} no WhatsApp ➔</a>`;
             });
         });
 
-        // FAQ Accordion with accessibility
+        // FAQ
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
-            
-            const id = 'faq-answer-' + Math.random().toString(36).substr(2, 9);
+            const id = 'faq-' + Math.random().toString(36).substr(2, 9);
             answer.setAttribute('id', id);
             question.setAttribute('aria-expanded', 'false');
             question.setAttribute('aria-controls', id);
-
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
-                faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
-                    otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                faqItems.forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
                 });
-
                 if (!isActive) {
                     item.classList.add('active');
                     question.setAttribute('aria-expanded', 'true');
@@ -490,20 +672,16 @@
             });
         });
 
-        // Smooth scroll for anchor links
+        // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 }
             });
         });
