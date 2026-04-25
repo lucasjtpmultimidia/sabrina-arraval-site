@@ -1,4 +1,3 @@
-index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -218,7 +217,7 @@ index.html
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: var(--spacing-lg);
             align-items: center;
         }
@@ -242,34 +241,49 @@ index.html
             max-width: 480px;
         }
 
+        /* NOVA ESTRUTURA VISUAL DO HERO */
         .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(200, 138, 117, 0.2);
+            z-index: 2;
             position: relative;
         }
 
-        .hero-image-placeholder {
-            width: 100%;
-            height: 500px;
-            background-color: #E0D4CC;
-            border-radius: 200px 200px 0 0;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Decorative circle */
-        .hero-visual::before {
+        /* Borda elegante atrás da imagem */
+        .hero-image-wrapper::after {
             content: '';
             position: absolute;
-            width: 200px;
-            height: 200px;
-            background-color: var(--color-terracotta);
-            opacity: 0.1;
-            border-radius: 50%;
-            bottom: -20px;
-            left: -40px;
-            z-index: -1;
+            top: 20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--color-terracotta);
+            border-radius: 24px;
+            z-index: 1;
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .hero-image-wrapper:hover::after {
+            top: 15px;
+            right: -15px;
         }
 
         /* --- ABOUT SECTION --- */
@@ -285,9 +299,9 @@ index.html
         }
 
         .about-image {
-            height: 400px;
-            background-color: var(--color-nude);
+            height: auto;
             border-radius: var(--radius-md);
+            overflow: hidden;
         }
 
         .about-text h2 {
@@ -571,18 +585,17 @@ index.html
 
             .hero { padding-top: 120px; text-align: center;}
             
-            .hero-image-placeholder {
-                margin-top: var(--spacing-md);
-                height: 350px;
+            .hero-image-wrapper {
+                margin: var(--spacing-md) auto 0;
             }
 
             .hero-text p { margin: 0 auto var(--spacing-md); }
 
-            .about-image { order: -1; height: 300px; }
+            .about-image { order: -1; }
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplified for this demo */
+            .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
 
             .steps-grid {
@@ -594,21 +607,22 @@ index.html
             
             .container { width: 92%; }
         }
-        .btn-whatsapp {
-  display: inline-block;
-  padding: 16px 36px;
-  background-color: #ffffff;
-  color: #C4876F;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 40px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
 
-.btn-whatsapp:hover {
-  background-color: #f5f5f5;
-}
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: #ffffff;
+            color: #C4876F;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 <body>
@@ -617,12 +631,9 @@ index.html
         <div class="container">
             <nav>
                 <div class="logo" style="display: flex; align-items: center;">
-    <img src="Logo-Bina.png" alt="Logo Sabrina Arraval" style="height: 50px; margin-right: 12px; width: auto;">
-    
-    <div>
-        Sabrina Arraval<span>Psicóloga</span>
-    </div>
-</div>
+                    <img src="Logo-Bina.png" alt="Logo Sabrina Arraval" style="height: 50px; margin-right: 12px; width: auto;">
+                    <div>Sabrina Arraval<span>Psicóloga</span></div>
+                </div>
                 <div class="nav-links">
                     <a href="#sobre">Sobre mim</a>
                     <a href="#como-funciona">Como funciona</a>
@@ -643,32 +654,32 @@ index.html
                     <a href="#agendar" class="btn btn-primary">Agendar minha sessão</a>
                 </div>
                 <div class="hero-visual">
-                    <div class="hero-image-placeholder">
-                        <span style="color: #A66D58; font-family: 'Playfair Display'; font-style: italic; font-size: 1.5rem;">Acolhimento & Conexão</span>
+                    <div class="hero-image-wrapper">
+                        <img src="Foto Bina Retrato.jpg" alt="Sabrina Arraval Psicóloga">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<section id="sobre" class="section-padding about">
-    <div class="container">
-        <div class="about-grid">
-            
-            <div class="about-image">
-                <img src="Foto Bina Retrato.png" alt="Retrato Sabrina Arraval" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-            </div>
-            
-            <div class="about-text">
-                <h2>Olá, sou a Sabrina.</h2>
-                <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
-                <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
-                <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
-            </div>
+    <section id="sobre" class="section-padding about">
+        <div class="container">
+            <div class="about-grid">
+                
+                <div class="about-image">
+                    <img src="Foto Bina Lendo.jpg" alt="Retrato Sabrina Arraval" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
+                </div>
+                
+                <div class="about-text">
+                    <h2>Olá, sou a Sabrina.</h2>
+                    <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
+                    <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
+                    <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
+                </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="como-funciona" class="section-padding steps">
         <div class="container">
@@ -791,9 +802,7 @@ index.html
             <h2>Vamos cuidar de você?</h2>
             <p>Dê o primeiro passo em direção ao seu bem-estar. Estou pronta para te ouvir.</p>
             <a href="https://wa.me/554198785111?text=Olá,%20Sabrina.%20Gostaria%20de%20agendar%20uma%20conversa%20inicial."
-  class="btn-whatsapp"
-  target="_blank"
->
+  class="btn-whatsapp" target="_blank">
   Entrar em contato pelo WhatsApp
 </a>
 
