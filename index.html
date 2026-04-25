@@ -34,7 +34,7 @@
             
             /* Shadows */
             --shadow-soft: 0 10px 30px rgba(166, 109, 88, 0.08);
-            --shadow-card: 0 4px 20px rgba(0,0,0,0.03);
+            --shadow-card: 0 8px 30px rgba(0,0,0,0.06);
 
             /* Transitions */
             --transition: all 0.3s ease;
@@ -108,23 +108,9 @@
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--color-text-main);
-            color: var(--color-text-main);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--color-text-main);
-            color: var(--color-white);
-        }
-
         .section-padding {
             padding: var(--spacing-xl) 0;
         }
-
-        .text-center { text-align: center; }
-        .flex-center { display: flex; align-items: center; justify-content: center; }
 
         /* --- HEADER --- */
         header {
@@ -217,7 +203,7 @@
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: var(--spacing-lg);
             align-items: center;
         }
@@ -241,7 +227,6 @@
             max-width: 480px;
         }
 
-        /* NOVO CSS PARA A IMAGEM DO HERO */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -249,15 +234,126 @@
             width: 100%;
         }
 
-        .hero-image {
+        /* --- BOOKING WIDGET (NOVO CSS) --- */
+        .booking-widget {
             width: 100%;
-            max-width: 450px; /* Controla o tamanho máximo da imagem */
-            height: auto;
-            border-radius: 20px; /* Cantos arredondados suaves */
-            box-shadow: var(--shadow-soft); /* Sombra elegante */
-            object-fit: cover;
-            /* Adiciona uma pequena borda branca (opcional, dá um efeito de foto) */
-            border: 8px solid var(--color-white); 
+            max-width: 460px;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FDFDFD;
+            border-bottom: 1px solid #EAE5E0;
+        }
+
+        .booking-tab {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--color-terracotta);
+            background: var(--color-white);
+            border-bottom: 2px solid var(--color-terracotta);
+            font-size: 1rem;
+        }
+
+        .booking-timezone {
+            padding-right: 24px;
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+        }
+
+        .booking-calendar {
+            padding: 24px;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .booking-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .booking-day-header {
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #EAE5E0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .day-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            text-transform: uppercase;
+        }
+
+        .day-date {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        .booking-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .booking-slot {
+            background: var(--color-off-white);
+            border: 1px solid #EAE5E0;
+            padding: 10px 0;
+            border-radius: var(--radius-sm);
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .booking-slot:hover:not(.disabled) {
+            background: var(--color-nude);
+            color: var(--color-terracotta-dark);
+            border-color: var(--color-terracotta);
+        }
+
+        .booking-slot.selected {
+            background: var(--color-terracotta);
+            color: var(--color-white);
+            border-color: var(--color-terracotta);
+        }
+
+        .booking-slot.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            text-decoration: line-through;
+            background: transparent;
+            border-color: transparent;
+        }
+
+        .booking-footer {
+            padding: 16px;
+            background: #FDFDFD;
+            text-align: center;
+            border-top: 1px solid #EAE5E0;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
         }
 
         /* --- ABOUT SECTION --- */
@@ -501,17 +597,6 @@
             margin-right: auto;
         }
 
-        .btn-white {
-            background-color: var(--color-white);
-            color: var(--color-terracotta);
-        }
-
-        .btn-white:hover {
-            background-color: var(--color-nude);
-            color: var(--color-terracotta-dark);
-            transform: translateY(-2px);
-        }
-
         /* --- FOOTER --- */
         footer {
             background-color: #2C2826;
@@ -559,28 +644,23 @@
 
             .hero { padding-top: 120px; text-align: center;}
             
-            .hero-visual {
-                margin-top: var(--spacing-md);
-            }
+            .hero-visual { margin-top: var(--spacing-md); }
 
             .hero-text p { margin: 0 auto var(--spacing-md); }
 
-            .about-image { order: -1;}
+            .about-image { order: -1; }
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplified for this demo */
+            .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
-
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .steps-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
-            
             .container { width: 92%; }
+            .booking-grid { grid-template-columns: repeat(2, 1fr); gap: 20px;} /* Duas colunas de dias no mobile */
         }
+
         .btn-whatsapp {
             display: inline-block;
             padding: 16px 36px;
@@ -626,245 +706,22 @@
                     <p>Psicoterapia online com acolhimento, empatia e escuta ativa. Cuide da sua saúde mental no conforto do seu lar, no seu tempo.</p>
                     <a href="#agendar" class="btn btn-primary">Agendar minha sessão</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-<section id="sobre" class="section-padding about">
-    <div class="container">
-        <div class="about-grid">
-            
-            <div class="about-image">
-                <img src="Foto Bina Retrato.png" alt="Retrato Sabrina Arraval" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-            </div>
-            
-            <div class="about-text">
-                <h2>Olá, sou a Sabrina.</h2>
-                <p>Entendo que dar o primeiro passo em direção à terapia exige coragem. Meu trabalho é oferecer um ambiente livre de julgamentos, onde sua história é ouvida com respeito e atenção plena.</p>
-                <p>Como psicóloga clínica, acredito na potência do vínculo humano para transformar dores em caminhos de autoconhecimento. Minha abordagem é focada em ajudar você a lidar com a ansiedade, estresse e desafios de relacionamento da vida moderna.</p>
-                <p>Aqui, a tecnologia é apenas um meio para que o nosso encontro aconteça, onde quer que você esteja.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-    <section id="como-funciona" class="section-padding steps">
-        <div class="container">
-            <div class="section-header">
-                <h2>Como funciona a terapia online?</h2>
-                <p>Um processo simples, seguro e confidencial.</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <span class="step-number">1</span>
-                    <h3>Agendamento</h3>
-                    <p>Você entra em contato via WhatsApp, tiramos suas dúvidas iniciais e escolhemos o melhor horário para sua rotina.</p>
-                </div>
-                <div class="step-card">
-                    <span class="step-number">2</span>
-                    <h3>A Sessão</h3>
-                    <p>No horário marcado, nos encontramos por videochamada (Google Meet ou Zoom) em uma plataforma segura e privada.</p>
-                </div>
-                <div class="step-card">
-                    <span class="step-number">3</span>
-                    <h3>O Processo</h3>
-                    <p>Caminhamos juntos, semana a semana, construindo ferramentas para você lidar melhor com suas emoções.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding benefits">
-        <div class="container">
-            <div class="section-header">
-                <h2>Por que iniciar a terapia?</h2>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-icon">✦</div>
-                    <div class="benefit-content">
-                        <h3>Autoconhecimento</h3>
-                        <p>Entenda seus padrões de comportamento e a origem de suas emoções.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✦</div>
-                    <div class="benefit-content">
-                        <h3>Gestão da Ansiedade</h3>
-                        <p>Aprenda técnicas e reflexões para acalmar a mente em dias agitados.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✦</div>
-                    <div class="benefit-content">
-                        <h3>Relacionamentos</h3>
-                        <p>Melhore sua comunicação e a forma como você se relaciona consigo e com os outros.</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✦</div>
-                    <div class="benefit-content">
-                        <h3>Acolhimento</h3>
-                        <p>Tenha um espaço semanal exclusivo para falar sobre você, sem filtros.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Relatos de quem já passou por aqui</h2>
-            </div>
-            <div class="testimonial-slider">
-                <div class="testimonial-card">
-                    <p class="quote">"A Sabrina tem uma escuta muito sensível. Me senti acolhida desde a primeira sessão online, mesmo estando em outro país. Foi essencial para meu processo de adaptação."</p>
-                    <p class="author">— M.S., 29 anos</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="quote">"Eu tinha receio de fazer terapia pelo computador, mas a conexão foi imediata. Hoje aguardo ansiosamente pelo nosso horário semanal. Recomendo muito."</p>
-                    <p class="author">— Lucas A., 34 anos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="section-padding faq">
-        <div class="container">
-            <div class="section-header">
-                <h2>Perguntas Frequentes</h2>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">Qual a duração da sessão?</button>
-                    <div class="faq-answer">
-                        <p>As sessões têm duração média de 50 minutos. É um tempo dedicado exclusivamente para você e suas questões.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Aceita convênios?</button>
-                    <div class="faq-answer">
-                        <p>Atualmente trabalho apenas com atendimentos particulares. No entanto, emito recibo para que você possa solicitar reembolso junto ao seu plano de saúde.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">A terapia online é eficaz?</button>
-                    <div class="faq-answer">
-                        <p>Sim! Estudos comprovam que a psicoterapia online tem a mesma eficácia da presencial para a maioria das demandas, com a vantagem da comodidade e flexibilidade.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Como faço o pagamento?</button>
-                    <div class="faq-answer">
-                        <p>O pagamento pode ser realizado via PIX ou transferência bancária, geralmente antes da sessão ou em pacotes mensais. Combinamos o que for melhor para você.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="agendar" class="section-padding cta-section">
-        <div class="container">
-            <h2>Vamos cuidar de você?</h2>
-            <p>Dê o primeiro passo em direção ao seu bem-estar. Estou pronta para te ouvir.</p>
-            <a href="https://wa.me/554198785111?text=Olá,%20Sabrina.%20Gostaria%20de%20agendar%20uma%20conversa%20inicial."
-  class="btn-whatsapp"
-  target="_blank"
->
-  Entrar em contato pelo WhatsApp
-</a>
-
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>Sabrina Arraval</h3>
-                    <p>Psicóloga Clínica<br></p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#como-funciona">Como funciona</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-            <div class="footer-contact">
-            <h4>Contato</h4>
-            <p>contato@sabrinaarraval.com.br</p> 
-            <p>Atendimento Online para todo o Brasil e Exterior.</p>
-            
-            <div style="margin-top: 10px;">
-                <a href="https://www.instagram.com/sabrina.psicologa1/" target="_blank" style="color: inherit; opacity: 0.8; text-decoration: none; transition: 0.3s;">
-                    Instagram
-                </a>
                 
-            </div>
-</div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sabrina Arraval Psicóloga. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Header Scroll Effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                // Close other open items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                    }
-                });
-
-                // Toggle current item
-                item.classList.toggle('active');
-                const answer = item.querySelector('.faq-answer');
-                if (item.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                } else {
-                    answer.style.maxHeight = null;
-                }
-            });
-        });
-
-        // Smooth Scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                <div class="hero-visual">
+                    <div class="booking-widget">
+                        <div class="booking-header">
+                            <div class="booking-tab">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                </svg>
+                                Atendimento Online
+                            </div>
+                            <div class="booking-timezone">
+                                * Horário de Brasília
+                            </div>
+                        </div>
+                        <div class="booking-calendar">
+                            <div class="booking-grid">
+                                <div class="booking-column">
+                                    <div class="booking-day-
