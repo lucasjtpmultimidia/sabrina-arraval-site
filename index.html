@@ -67,7 +67,6 @@
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--color-terracotta); transition: var(--transition); }
         .nav-links a:hover { color: var(--color-terracotta); }
         .nav-links a:hover::after { width: 100%; }
-        /* Classe de sublinhado reutilizável */
         .hover-underline { position: relative; }
         .hover-underline::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: var(--color-terracotta); transition: width 0.3s ease; }
         .hover-underline:hover::after { width: 100%; }
@@ -93,6 +92,7 @@
         .booking-timezone { padding-right: 24px; font-size: 0.75rem; color: var(--color-text-light); }
         .booking-pricing { background-color: var(--color-nude); text-align: center; padding: 12px; font-size: 0.95rem; color: var(--color-text-main); border-bottom: 1px solid #EAE5E0; }
         .booking-pricing strong { color: var(--color-terracotta-dark); }
+        .booking-disclaimer { text-align: center; padding: 10px 24px; font-size: 0.8rem; color: #8B7E78; background-color: #FFFBF7; border-bottom: 1px solid #EAE5E0; font-style: italic; }
         .booking-calendar-wrapper { padding: 24px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--color-terracotta) var(--color-nude); }
         .booking-calendar-wrapper::-webkit-scrollbar { height: 6px; }
         .booking-calendar-wrapper::-webkit-scrollbar-track { background: var(--color-nude); border-radius: 10px; }
@@ -108,7 +108,7 @@
         .booking-slot.selected { background: var(--color-terracotta); color: var(--color-white); border-color: var(--color-terracotta); }
         .booking-footer { padding: 16px; background: #FDFDFD; text-align: center; border-top: 1px solid #EAE5E0; font-size: 0.9rem; color: var(--color-text-light); }
 
-        /* About (somente texto) */
+        /* About */
         .about { background-color: var(--color-rose-soft); }
         .about-text { max-width: 750px; margin: 0 auto; text-align: center; }
         .about-text h2 { font-size: 2.5rem; margin-bottom: var(--spacing-sm); }
@@ -205,28 +205,28 @@
                     <a href="#como-funciona">Como funciona</a>
                     <a href="#faq">Dúvidas</a>
                 </div>
-                <!-- Botão agora leva para o calendário -->
+                <!-- Botão leva para o calendário -->
                 <a href="#agendamento" class="btn btn-primary btn-sm">Agendar sessão</a>
                 <div class="mobile-menu-btn">☰</div>
             </nav>
         </div>
     </header>
 
-    <!-- HERO: foto + especialidades + texto + botões -->
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-photo">
                     <img src="Foto Bina Retrato.png" alt="Sabrina Arraval - Psicóloga Clínica">
                     <div class="hero-tags">
-                        <span>Ansiedade</span>
-                        <span>Depressão</span>
-                        <span>Angústia</span>
-                        <span>Insônia</span>
-                        <span>Dependência Emocional</span>
-                        <span>Vida Amorosa</span>
+                        <span>ansiedade</span>
+                        <span>depressão</span>
+                        <span>angústia</span>
+                        <span>insônia</span>
+                        <span>dependência emocional</span>
+                        <span>vida amorosa</span>
                         <span>Burnout</span>
-                        <span>Autoestima</span>
+                        <span>autoestima</span>
                     </div>
                 </div>
                 <div class="hero-text">
@@ -241,12 +241,12 @@
         </div>
     </section>
 
-    <!-- AGENDAMENTO: calendário dinâmico -->
+    <!-- AGENDAMENTO -->
     <section id="agendamento" class="section-padding booking-section">
         <div class="container">
             <div class="section-header">
                 <h2>Escolha seu horário</h2>
-                <p>Ou clique abaixo para falar diretamente pelo WhatsApp.</p>
+                <p>Os horários abaixo são sugestivos; a disponibilidade real será confirmada no WhatsApp.</p>
             </div>
             <div class="booking-widget">
                 <div class="booking-header">
@@ -262,9 +262,13 @@
                 <div class="booking-pricing">
                     Duração: <strong>1h30</strong> | 1ª Sessão: <strong>R$ 100,00</strong> | Demais: <strong>R$ 150,00</strong>
                 </div>
+                <!-- NOVA MENSAGEM DE AVISO -->
+                <div class="booking-disclaimer">
+                    ⓘ Os horários são uma referência para facilitar seu contato. Alguns podem já estar ocupados.
+                </div>
                 <div class="booking-calendar-wrapper">
                     <div class="booking-grid" id="booking-grid">
-                        <!-- Gerado dinamicamente via JavaScript -->
+                        <!-- Gerado dinamicamente -->
                     </div>
                 </div>
                 <div class="booking-footer" id="booking-action-text">
@@ -403,7 +407,6 @@
             const today = new Date();
             bookingGrid.innerHTML = '';
 
-            // Gera os próximos 7 dias (a partir de amanhã)
             for (let i = 1; i <= 7; i++) {
                 const date = new Date(today);
                 date.setDate(today.getDate() + i);
@@ -425,7 +428,6 @@
                 bookingGrid.appendChild(column);
             }
 
-            // Reatribuir eventos de clique nos slots
             document.querySelectorAll('.booking-slot').forEach(slot => {
                 slot.addEventListener('click', function() {
                     document.querySelectorAll('.booking-slot').forEach(s => s.classList.remove('selected'));
@@ -435,7 +437,8 @@
                     const column = this.closest('.booking-column');
                     const dayName = column.querySelector('.day-name').innerText;
                     const dayDate = column.querySelector('.day-date').innerText;
-                    const wppMessage = encodeURIComponent(`Olá, Sabrina. Gostaria de agendar minha 1ª sessão para ${dayName} (${dayDate}) às ${time}.`);
+                    // Mensagem atualizada com "O horário está disponível?"
+                    const wppMessage = encodeURIComponent(`Olá, Sabrina. Gostaria de agendar minha 1ª sessão para ${dayName} (${dayDate}) às ${time}. O horário está disponível?`);
                     
                     actionText.innerHTML = `<a href="https://wa.me/554198785111?text=${wppMessage}" target="_blank" class="hover-underline" style="color: var(--color-terracotta); font-weight: 700; text-decoration: none;">Reservar para ${dayName} às ${time} no WhatsApp ➔</a>`;
                 });
